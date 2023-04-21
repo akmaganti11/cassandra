@@ -7,7 +7,7 @@
 
 # The name of the cluster. This is mainly used to prevent machines in
 # one logical cluster from joining another.
-cluster_name: 'Test Cluster'
+cluster_name: 'Local Cluster AK'
 
 # This defines the number of tokens randomly assigned to this node on the ring
 # The more tokens, relative to other nodes, the larger the proportion of data
@@ -216,7 +216,7 @@ partitioner: org.apache.cassandra.dht.Murmur3Partitioner
 # commit log.  when running on magnetic HDD, this should be a
 # separate spindle than the data directories.
 # If not set, the default directory is $CASSANDRA_HOME/data/commitlog.
-# commitlog_directory: /var/lib/cassandra/commitlog
+commitlog_directory: $CASSANDRA_HOME/data/commitlog
 
 # Enable / disable CDC functionality on a per-node basis. This modifies the logic used
 # for write path allocation rejection (standard: never reject. cdc: reject Mutation
@@ -1350,10 +1350,10 @@ compaction_large_partition_warning_threshold_mb: 100
 
 # Audit logging - Logs every incoming CQL command request, authentication to a node. See the docs
 # on audit_logging for full details about the various configuration options.
-audit_logging_options:
-    enabled: false
-    logger:
-      - class_name: BinAuditLogger
+#audit_logging_options: 
+    #enabled: true
+    #logger:
+    #  - class_name: BinAuditLogger
     # audit_logs_dir:
     # included_keyspaces:
     # excluded_keyspaces: system, system_schema, system_virtual_schema
@@ -1372,9 +1372,9 @@ audit_logging_options:
 
 # default options for full query logging - these can be overridden from command line when executing
 # nodetool enablefullquerylog
-#full_query_logging_options:
-    # log_dir:
-    # roll_cycle: HOURLY
+full_query_logging_options:
+    log_dir: E:\DEV\NEW_WS\cassandra\logs\full_query_logger
+    roll_cycle: HOURLY
     # block: true
     # max_queue_weight: 268435456 # 256 MiB
     # max_log_size: 17179869184 # 16 GiB

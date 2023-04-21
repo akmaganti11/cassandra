@@ -98,12 +98,13 @@ if [ "x$MAX_HEAP_SIZE" = "x" ]; then
     MAX_HEAP_SIZE="128m"
 fi
 
-CMD=$(echo "$JAVA" $JAVA_AGENT -ea -cp "$CLASSPATH" $JVM_OPTS -Xmx$MAX_HEAP_SIZE \
+CMD=$(echo 'C:/Program Files/Java/jdk1.8.0_311/bin/java' $JAVA_AGENT -ea -cp "$CLASSPATH" $JVM_OPTS -Xmx$MAX_HEAP_SIZE \
             -XX:ParallelGCThreads=1 \
             -Dcassandra.storagedir="$cassandra_storagedir" \
             -Dlogback.configurationFile=logback-tools.xml \
             $JVM_ARGS \
             org.apache.cassandra.tools.NodeTool -p $JMX_PORT $ARGS)
+echo $CMD            
 
 if [ "x$ARCHIVE_COMMAND" != "x" ]
 then

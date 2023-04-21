@@ -51,3 +51,36 @@ stream_throughput_outbound_megabits_per_sec: 200000000
 enable_sasi_indexes: true
 enable_materialized_views: true
 file_cache_enabled: true
+
+# Audit logging - Logs every incoming CQL command request, authentication to a node. See the docs
+# on audit_logging for full details about the various configuration options.
+#audit_logging_options: 
+    #enabled: true
+    #logger:
+     # - class_name: BinAuditLogger
+    # audit_logs_dir:
+    # included_keyspaces:
+    # excluded_keyspaces: system, system_schema, system_virtual_schema
+    # included_categories:
+    # excluded_categories:
+    # included_users:
+    # excluded_users:
+    # roll_cycle: HOURLY
+    # block: true
+    # max_queue_weight: 268435456 # 256 MiB
+    # max_log_size: 17179869184 # 16 GiB
+    ## archive command is "/path/to/script.sh %path" where %path is replaced with the file being rolled:
+    # archive_command:
+    # max_archive_retries: 10
+    
+# default options for full query logging - these can be overridden from command line when executing
+# nodetool enablefullquerylog
+#full_query_logging_options:
+    #log_dir: build/test/logs
+    #roll_cycle: HOURLY
+    # block: true
+    # max_queue_weight: 268435456 # 256 MiB
+    # max_log_size: 17179869184 # 16 GiB
+    ## archive command is "/path/to/script.sh %path" where %path is replaced with the file being rolled:
+    # archive_command:
+    # max_archive_retries: 10    

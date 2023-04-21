@@ -72,6 +72,7 @@ import org.apache.cassandra.io.FSError;
 import org.apache.cassandra.io.sstable.CorruptSSTableException;
 import org.apache.cassandra.io.sstable.SSTableHeaderFix;
 import org.apache.cassandra.io.util.FileUtils;
+import org.apache.cassandra.kafka.KafkaEventPublishManager;
 import org.apache.cassandra.locator.InetAddressAndPort;
 import org.apache.cassandra.metrics.CassandraMetricsRegistry;
 import org.apache.cassandra.metrics.DefaultNameFactory;
@@ -464,6 +465,8 @@ public class CassandraDaemon
         }
 
         AuditLogManager.instance.initialize();
+        //Register Kafka Producer for Events
+        KafkaEventPublishManager.instance.registerAsListener();
 
         // schedule periodic background compaction task submission. this is simply a backstop against compactions stalling
         // due to scheduling errors or race conditions
